@@ -17,8 +17,17 @@
 #   about_triangle_project_2.py
 #
 def triangle(a, b, c):
-    # DELETE 'PASS' AND WRITE THIS CODE
-    pass
+    if a <= 0 or b <= 0 or c <= 0:
+        raise TriangleError(AttributeError("Triangles have sides with positive length."))
+    if (a + b + c) <= 2 * max(a, b, c):
+        raise TriangleError(AttributeError("The largest side of a triangle must be smaller than the sum of the other two sides."))
+
+
+    if a == b == c:
+        return 'equilateral'
+    elif (a == b) | (a == c) | (b == c):
+        return 'isosceles'
+    return 'scalene'
 
 # Error class used in part 2.  No need to change this code.
 class TriangleError(Exception):
